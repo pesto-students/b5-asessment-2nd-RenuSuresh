@@ -29,8 +29,20 @@ function myFilter(array,callback){
   return returnedArray;
 }
 
-// Reduce:
-
+// Reduce: returns single value
+function myReduce(array, callbackFunc, initialValue) {
+  let acc = initialValue == undefined ? undefined : initialValue;
+  
+  for (let i = 0; i < array.length; i++) {
+    if (acc != undefined) {
+      // Set accumulator to ? Call(callbackfn, undefined, « accumulator, kValue, k, O »).
+      acc = callbackFunc.call(undefined, acc, array[i], i, array);
+    } else {
+      acc = array[i];
+    }
+  }
+  return acc;
+}
 
 
 export {
